@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Expenses from './compnenet/expense/Expenses';
 import NewExpense from './compnenet/NewExpense/NewExpense';
 
-const DUMMY_EXPENSES = [
+//SOME DUMMY DATA TO SHOW INITIALLY
+const DUMMY_EXPENSES = [ 
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -22,27 +23,23 @@ const DUMMY_EXPENSES = [
     amount: 450,
     date: new Date(2021, 5, 12),
   },
-];
+]; 
 
+//MAIN COMPONENT
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES); // USESTATE TO STORE THE DUMMY DATA
 
-  const addExpenseHandler = (expense) => {
-    setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
-  };
+  const addExpenseHandler = (expense) => { // THE ADDEXPENSEHANDLER TO ADD THE EXPENSE
+    setExpenses((prevExpenses) => { // THE SETEXPENSES TO ADD THE EXPENSE
+      return [expense, ...prevExpenses]; // THE ...PREVEXPENSES TO ADD THE EXPENSE
+    }); 
+  }; //END OF ADDEXPENSEHANDLER
 
-  // return React.createElement(
-  //   'div',
-  //   {},
-  //   React.createElement('h2', {}, "Let's get started!"),
-  //   React.createElement(Expenses, { items: expenses })
-  // );
+
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <NewExpense onAddExpense={addExpenseHandler} /> 
       <Expenses items={expenses} />
     </div>
   );
